@@ -1,12 +1,12 @@
 # Non-blocking I/O - Event Loop - coroutine, async, await
-in asyncio concept is used
-event loop is the scheduler of coroutines
-when you mark something function as async it is a coroutine
-eventloop will schedule the couroutine and let it run until it hits await stmt
-the coroutine once it hits await, will yield control to event loop
-event loop then schedules other tasks to run. while that task is waiting to complete.
-once that task si complete, then event loop lets it resume operation
-so when a function  is awaiting , other tasks can run , so it exhibits non-blocking I/O behavior
+- in asyncio concept is used
+- event loop is the scheduler of coroutines
+- when you mark something function as async it is a coroutine
+- eventloop will schedule the couroutine and let it run until it hits await stmt
+- the coroutine once it hits await, will yield control to event loop
+- event loop then schedules other tasks to run. while that task is waiting to complete.
+- once that task si complete, then event loop lets it resume operation
+- so when a function  is awaiting , other tasks can run , so it exhibits non-blocking I/O behavior
 
 # within the computer - process, threads - pipes
 a process will have memory allocated to it
@@ -22,6 +22,12 @@ the type of socket can be UDP ( send data and dont bother to check if it was act
 when we say localhost, i.e. ip address 127.0.0.1, the os creates both sockets on the same computer and one connected to client process, other connected to server process but both on teh same machine.
 In UNIX , it does this sockets between processes to make them talk to each other.
 ============
+# between computers - TCP, HTTP, REST, GRAPHQL
+- client and server agreeing to follow TCP means creating socket of that type, which means they both agree to follow rules where they will ensure reliable delivery of data, ensure order is followed, verification is done at the other end, retry if needed etc. we dont care about the data format of what is being sent in this case. so TCP is protocol of sendign data and is at Network layer of OSI model of communication.
+- HTTP means caring about the data format..ensuring that it is like a request, having a header, body, type etc.. client sending data in a certain format, server sending data in a certain format using that TCP connection... so HTTP is a protocol for data format.. and is at application layer of OSI model of communication..
+- REST means not just the data format , but also deciding what can be requested and what will be sent, like dont just ask for anything and send everything ..ask for /users and server should provide that api and when asked, provide only users data and nothing else.. so that it is organized.. so REST (representational state transfer) is an architecture style of communication..so this is also at application layer..
+- GRAPHQL is another architecture style that tells clietn to ask what exactly they want , dont just ask /users.. ask exaclty i want this users all data across orders, complaints, stores etc.. and thee server to first gather all their data , cleanup, avoid sending unnecessary data and then send the only required data 
+
 
 
 I wrote below temrs and words in some ranodm order, if it makes sense group them and sort in a logical order..so that one should know the above terms first before they can understand the below ones..

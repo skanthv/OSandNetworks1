@@ -24,10 +24,19 @@ In UNIX , it does this sockets between processes to make them talk to each other
 ============
 # between computers - TCP, HTTP, REST, GRAPHQL
 - client and server agreeing to follow TCP means creating socket of that type, which means they both agree to follow rules where they will ensure reliable delivery of data, ensure order is followed, verification is done at the other end, retry if needed etc. we dont care about the data format of what is being sent in this case. so TCP is protocol of sendign data and is at Network layer of OSI model of communication.
-- HTTP means caring about the data format..ensuring that it is like a request, having a header, body, type etc.. client sending data in a certain format, server sending data in a certain format using that TCP connection... so HTTP is a protocol for data format.. and is at application layer of OSI model of communication..
-- REST means not just the data format , but also deciding what can be requested and what will be sent, like dont just ask for anything and send everything ..ask for /users and server should provide that api and when asked, provide only users data and nothing else.. so that it is organized.. so REST (representational state transfer) is an architecture style of communication..so this is also at application layer..
+- HTTP means caring about the data format..ensuring that it is like a request, having a header, use standard methods like GET/POST/PUT/DELETE, standard status codes, body, type etc.. client sending data in a certain format, server sending data in a certain format using that TCP connection... so HTTP is a protocol for data format.. and is at application layer of OSI model of communication..
+- REST means not just the data format , but also deciding what can be requested and what will be sent, like dont just ask for anything and send everything ..ask for /users and server should provide that api and when asked, provide only users data and nothing else.. so that it is organized..this is called organizing api's at resource level. also ensuring the request response is not dependent on remembering the previous requests..so it is STATELESS.. so REST (representational state transfer) is an architecture style of communication..so this is also at application layer..
 - GRAPHQL is another architecture style that tells clietn to ask what exactly they want , dont just ask /users.. ask exaclty i want this users all data across orders, complaints, stores etc.. and thee server to first gather all their data , cleanup, avoid sending unnecessary data and then send the only required data 
 
+
+# between computers - HTTP/1, HTTP/2
+- HTTP is a way of sending a request and getting a response.. and there is one TCP connection socket created and closed for that purpose.
+- HTTP/2 is a way of using that single TCP connection socket and sending multiple requests and getting responses to those requests. so the format of data sent and received is different when client and server follow HTTP/2 rules which then allow single connection to be used by multiple clients .. so this does multiplexing of connection.
+
+# between computers - HTTP, persistent HTTP
+- in general HTTP format of sending data over TCP, the socket created of TCP type will not have the keepalive option set..so it is closed after response.
+- in persistent HTTP, we ensure that the keepalive option is set, so that the connection remains open, so that it can handle multiple requests and responses.
+- so whether you use keepalive set or when you use HTTP/2 in both cases keepalive is set so that the TCP type socket connection is kept open for multiple requests and responses.
 
 
 I wrote below temrs and words in some ranodm order, if it makes sense group them and sort in a logical order..so that one should know the above terms first before they can understand the below ones..

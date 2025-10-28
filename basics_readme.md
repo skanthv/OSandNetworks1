@@ -7,6 +7,7 @@
 - event loop then schedules other tasks to run. while that task is waiting to complete.
 - once that task si complete, then event loop lets it resume operation
 - so when a function  is awaiting , other tasks can run , so it exhibits non-blocking I/O behavior
+- In this case, it shows concurrency type of behavior, by being cooperative.. but the concurrency type of behavior is on a single thread ..
 
 # within the computer - process, threads - pipes
 a process will have memory allocated to it
@@ -15,6 +16,7 @@ threads are things running within the process, using the same memory, using diff
 each process will have 3 pipes..stdin, stdout, stderr.
 Shell is a software used to interact with OS
 when we want 2 processes to communicate with each other, and we run some command in shell, it uses OS commands and makes a connection between stdout pipe (aka channel) of one process to the stdin pipe of the other process.
+- in python you can use import sys; then use print("Err",sys.stderr) ; or for i in sys.stdin.. kind of statements to access those pipes.
 
 # between computers - sockets , TCP, UDP , localhost 
 when we want one process in one computer to communicate with another process in another computer (generally called cliet on one computer and server on other) then OS on both computers creates a socket between those 2 computers. the type of socket can be TCP (which means sending data until it is guaranteed to be delivered and ensuring it is sent in the same order etc..)..then it is called TCP socket or TCP connection..
